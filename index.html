@@ -25,7 +25,7 @@
   --mono:'DM Mono',monospace;
 }
 html{scroll-behavior:smooth}
-body{background:var(--W);color:var(--N);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:none}
+body{background:var(--W);color:var(--N);font-family:var(--sans);font-weight:300;overflow-x:hidden}
 
 /* ═══ SECTION ARROW ═══ */
 .sec-arrow{display:flex;justify-content:center;align-items:center;height:64px;position:relative;z-index:10;margin-top:-32px;margin-bottom:-32px}
@@ -36,10 +36,6 @@ body{background:var(--W);color:var(--N);font-family:var(--sans);font-weight:300;
 .sec-arrow-w a:hover{background:var(--W);color:var(--N);border-color:var(--W)}
 @keyframes arrowBob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
-/* ═══ CURSOR ═══ */
-#c{position:fixed;width:8px;height:8px;background:var(--N);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
-#cr{position:fixed;width:32px;height:32px;border:1px solid var(--N);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-radius .25s;mix-blend-mode:difference}
-body:has(a:hover) #cr,body:has(button:hover) #cr{width:60px;height:60px;border-radius:4px}
 
 /* ═══ NAV ═══ */
 nav{position:fixed;inset:0 0 auto 0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:28px 56px;transition:all .5s}
@@ -710,8 +706,7 @@ footer{background:#000D18;padding:56px;display:flex;justify-content:center;align
 </head>
 <body>
 
-<div id="c"></div>
-<div id="cr"></div>
+
 
 <!-- NAV -->
 <nav id="nav">
@@ -2554,12 +2549,6 @@ footer{background:#000D18;padding:56px;display:flex;justify-content:center;align
 </footer>
 
 <script>
-// ── CURSOR ──
-const C=document.getElementById('c'),CR=document.getElementById('cr');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function tick(){C.style.left=mx+'px';C.style.top=my+'px';rx+=(mx-rx)*.13;ry+=(my-ry)*.13;CR.style.left=rx+'px';CR.style.top=ry+'px';requestAnimationFrame(tick)})();
-
 // ── NAV ──
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{
