@@ -1030,6 +1030,7 @@ footer{background:#000D18;padding:56px;display:flex;justify-content:center;align
     .pin-lbl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;fill:#D6E7F0;pointer-events:none;transition:fill .2s;text-transform:uppercase}
     .map-pin-g:hover .pin-lbl,.map-pin-g.active .pin-lbl{fill:#fff}
     .map-popup{position:absolute;background:#fff;border-radius:12px;overflow:hidden;width:260px;box-shadow:0 20px 60px rgba(0,0,0,.45);will-change:opacity,transform;transition:opacity .2s,transform .2s;opacity:0;pointer-events:none;transform:translateY(6px);z-index:9000}
+    .map-popup:not(.show) *{pointer-events:none}
     .map-popup.show{opacity:1;pointer-events:auto;transform:none}
     .popup-img{width:100%;height:140px;object-fit:cover;display:block}
     .popup-body{padding:14px 16px 16px}
@@ -1330,11 +1331,8 @@ footer{background:#000D18;padding:56px;display:flex;justify-content:center;align
         if(currentZoom===id){ zoomOut(); return; }
         const mapCont = document.getElementById('map-container');
         const rect = mapCont.getBoundingClientRect();
-        const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-        if(!fullyVisible){
+        if(rect.top < 0 || rect.bottom > window.innerHeight){
           mapCont.scrollIntoView({ behavior:'smooth', block:'center' });
-          setTimeout(()=> _doZoomPin(id), 650);
-          return;
         }
         _doZoomPin(id);
       }
@@ -1382,6 +1380,7 @@ footer{background:#000D18;padding:56px;display:flex;justify-content:center;align
         d3.select('#spain-map').transition().duration(600).ease(d3.easeCubicInOut)
           .attr('viewBox', `0 0 ${W} ${H}`)
           .on('end', function(){
+            if(currentZoom) return;
             const mc = document.getElementById('map-container');
             mc.classList.remove('map-zoomed');
             mc.parentElement.style.paddingTop = '48px';
