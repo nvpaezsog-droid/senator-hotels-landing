@@ -146,7 +146,7 @@ nav.s .n-btn:hover{background:var(--N);color:var(--W)}
 .vm-txt{font-size:13px;line-height:1.85;color:var(--N60)}
 
 /* ═══ SLIDE 3 — RESUMEN: big number grid ═══ */
-.s-res{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--N)}
+.s-res{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--N);scroll-margin-top:80px}
 .rc{background:var(--N);padding:64px 48px;position:relative;overflow:hidden;transition:background .4s;cursor:default}
 .rc::after{content:'';position:absolute;inset:0;background:var(--W5);opacity:0;transition:opacity .4s}
 .rc:hover::after{opacity:1}
@@ -874,7 +874,7 @@ footer{background:#000D18;padding:56px;display:flex;justify-content:center;align
   <div class="sec-arrow" style="background:var(--W)">
     <a href="#posicion-financiera" aria-label="Ver posición financiera"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a>
   </div>
-  <div id="posicion-financiera" style="padding:48px 56px 0;border-top:1px solid var(--N10)">
+  <div id="posicion-financiera" style="padding:48px 56px 0;border-top:1px solid var(--N10);scroll-margin-top:80px">
     <h3 style="font-family:var(--serif);font-size:clamp(18px,2vw,26px);font-weight:700;color:var(--N);line-height:1.1">Posición financiera</h3>
   </div>
   <div class="deuda-row">
@@ -3102,6 +3102,15 @@ sections.forEach((s)=>{ const {from, to, dark} = s;
   } else {
     el.insertAdjacentElement('afterend', arrow);
   }
+});
+
+// Fix scroll offset for #posicion-financiera anchor
+document.querySelector('a[href="#posicion-financiera"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  const target = document.getElementById('posicion-financiera');
+  const navH = document.querySelector('nav').offsetHeight;
+  const top = target.getBoundingClientRect().top + window.pageYOffset - navH - 16;
+  window.scrollTo({ top, behavior: 'smooth' });
 });
 
 </script>
