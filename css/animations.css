@@ -1,14 +1,49 @@
 /* === KEYFRAMES === */
-@keyframes arrowBob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-@keyframes fw{from{max-width:0;opacity:0}to{max-width:60px;opacity:1}}
-@keyframes hsa{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
-@keyframes fl{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@keyframes mqa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes arrowBob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+@keyframes fw {
+  from { max-width: 0;    opacity: 0; }
+  to   { max-width: 60px; opacity: 1; }
+}
+
+@keyframes hsa {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(4px); }
+}
+
+@keyframes fl {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes mqa {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
 /* === REVEAL === */
-.rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-.rv.on{opacity:1;transform:none}
-.rv.left{transform:translateX(-40px)}.rv.left.on{transform:none}
-.rv.right{transform:translateX(40px)}.rv.right.on{transform:none}
-.rv.scale{transform:scale(.95)}.rv.scale.on{transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.25s}.d4{transition-delay:.35s}.d5{transition-delay:.45s}.d6{transition-delay:.55s}
+.rv {
+  opacity:    0;
+  transform:  translateY(40px);
+  transition: opacity  .9s cubic-bezier(.16, 1, .3, 1),
+              transform .9s cubic-bezier(.16, 1, .3, 1);
+}
+
+.rv.on       { opacity: 1; transform: none; }
+.rv.left     { transform: translateX(-40px); }
+.rv.left.on  { transform: none; }
+.rv.right    { transform: translateX(40px); }
+.rv.right.on { transform: none; }
+.rv.scale    { transform: scale(.95); }
+.rv.scale.on { transform: none; }
+
+/* === STAGGER DELAYS === */
+.d1 { transition-delay: .10s; }
+.d2 { transition-delay: .20s; }
+.d3 { transition-delay: .25s; }
+.d4 { transition-delay: .35s; }
+.d5 { transition-delay: .45s; }
+.d6 { transition-delay: .55s; }

@@ -1,4 +1,4 @@
-// ── VENTAS ANIMATION ──
+﻿// ── VENTAS ANIMATION ──
 (function(){
   var ventObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -52,7 +52,7 @@ sections.forEach((s)=>{ const {from, to, dark} = s;
   if(!el) return;
   const arrow = document.createElement('div');
   arrow.className = 'sec-arrow' + (dark ? ' sec-arrow-w' : '');
-  arrow.style.background = s.bg || (dark ? 'var(--N)' : 'var(--W)');
+  arrow.style.background = s.bg || (dark ? 'var(--color-dark)' : 'var(--color-white)');
   if(s.pad){var h=s.pad*2+64;arrow.style.height=h+'px';arrow.style.marginTop=-(h/2)+'px';arrow.style.marginBottom=-(h/2)+'px';}
   if(s.padBot){arrow.style.marginBottom=(s.padBot-32)+'px';}
   arrow.innerHTML = `<a href="${to}" aria-label="Siguiente sección">${arrowSVG}</a>`;
