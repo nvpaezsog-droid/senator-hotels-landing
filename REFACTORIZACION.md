@@ -121,15 +121,15 @@ senator-hotels-landing/
 
 **Tareas:**
 
-- [ ] Revisar jerarquía de headings y corregir saltos (`h1` → `h2` → `h3`, sin saltarse niveles)
-- [ ] Añadir `alt` descriptivos en todas las imágenes que les falte
-- [ ] Sustituir `<div>` contenedores de sección por `<section id="...">`
-- [ ] Usar `<article>` para tarjetas de contenido independiente
-- [ ] Usar `<figure>` + `<figcaption>` en imágenes con descripción
-- [ ] Revisar y completar `aria-label` en botones, links y elementos interactivos
-- [ ] Eliminar atributos `style=""` inline que ya estén cubiertos por CSS
-- [ ] Añadir `lang="es"` al `<html>` si no está
-- [ ] Añadir meta descripción y og-tags básicos
+- [x] Revisar jerarquía de headings y corregir saltos (`h1` → `h2` → `h3`, sin saltarse niveles)
+- [x] Añadir `alt` descriptivos en todas las imágenes que les falte
+- [x] Sustituir `<div>` contenedores de sección por `<section id="...">`
+- [ ] ~~Usar `<article>` para tarjetas de contenido independiente~~ — requiere reestructurar el marcado de las tarjetas de hotel y los popups; el coste supera el beneficio semántico en este contexto de presentación.
+- [ ] ~~Usar `<figure>` + `<figcaption>` en imágenes con descripción~~ — las descripciones ya están en overlays posicionados con CSS; envolver en `<figure>` rompería los estilos sin aportación accesible real.
+- [x] Revisar y completar `aria-label` en botones, links y elementos interactivos
+- [x] Eliminar atributos `style=""` inline que ya estén cubiertos por CSS
+- [x] Añadir `lang="es"` al `<html>` si no está
+- [x] Añadir meta descripción y og-tags básicos
 
 **Archivos afectados:** `index.html`
 
