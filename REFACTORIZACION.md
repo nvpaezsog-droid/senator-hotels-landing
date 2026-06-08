@@ -63,22 +63,22 @@ senator-hotels-landing/
 
 **Tareas:**
 
-- [ ] Expandir el CSS minificado a formato legible (un valor por línea)
-- [ ] Ordenar propiedades por bloque lógico en cada regla:
+- [x] Expandir el CSS minificado a formato legible (un valor por línea)
+- [x] Ordenar propiedades por bloque lógico en cada regla:
   1. Posicionamiento (`position`, `top`, `z-index`)
   2. Display y layout (`display`, `grid`, `flex`)
   3. Dimensiones (`width`, `height`, `padding`, `margin`)
   4. Visual (`background`, `border`, `box-shadow`)
   5. Tipografía (`font`, `color`, `text-align`)
   6. Transiciones y animaciones
-- [ ] Renombrar variables de color con nombres semánticos:
+- [x] Renombrar variables de color con nombres semánticos:
   - `--N` → `--color-dark`
   - `--W` → `--color-white`
   - `--N5`, `--N10`… → `--color-dark-5`, `--color-dark-10`…
-- [ ] Eliminar propiedades duplicadas o sobreescritas sin efecto
-- [ ] Consolidar media queries dentro del contexto de cada componente
-- [ ] Añadir comentarios de sección: `/* === HERO === */`, `/* === NAV === */`…
-- [ ] Revisar y unificar valores magic numbers (espaciados, tamaños)
+- [x] Eliminar propiedades duplicadas o sobreescritas sin efecto
+- [x] Consolidar media queries dentro del contexto de cada componente
+- [x] Añadir comentarios de sección: `/* === HERO === */`, `/* === NAV === */`…
+- [x] Revisar y unificar valores magic numbers (espaciados, tamaños)
 
 **Archivos afectados:** todos los archivos en `css/`
 
