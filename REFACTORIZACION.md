@@ -43,13 +43,13 @@ senator-hotels-landing/
 
 **Tareas:**
 
-- [ ] Crear carpeta `css/`
-- [ ] Extraer el bloque `<style>` completo a `css/` dividido en los 5 archivos descritos
-- [ ] Crear carpeta `js/`
-- [ ] Extraer el bloque `<script>` completo a `js/` dividido en los 6 archivos descritos
-- [ ] Sustituir `<style>...</style>` por `<link rel="stylesheet">` para cada archivo CSS
-- [ ] Sustituir `<script>...</script>` por `<script src="...">` para cada archivo JS
-- [ ] Verificar que la página carga y funciona exactamente igual
+- [x] Crear carpeta `css/`
+- [x] Extraer el bloque `<style>` completo a `css/` dividido en los 5 archivos descritos
+- [x] Crear carpeta `js/`
+- [x] Extraer el bloque `<script>` completo a `js/` dividido en los 6 archivos descritos
+- [x] Sustituir `<style>...</style>` por `<link rel="stylesheet">` para cada archivo CSS
+- [x] Sustituir `<script>...</script>` por `<script src="...">` para cada archivo JS
+- [x] Verificar que la página carga y funciona exactamente igual
 
 **Archivos afectados:** `index.html`
 
