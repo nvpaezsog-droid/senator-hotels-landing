@@ -92,22 +92,22 @@ senator-hotels-landing/
 
 **Tareas:**
 
-- [ ] Crear `js/data.js` con todos los datos hardcoded extraídos:
+- [x] Crear `js/data.js` con todos los datos hardcoded extraídos:
   - Datos de gráficas de fidelización (8 años, valores, deltas)
   - Datos del gráfico donut (segmentación clientes)
   - Datos de revalorización
   - Etiquetas y colores de Chart.js
   - Definición de las 24 secciones para `sec-arrows`
-- [ ] Envolver todo el código en funciones nombradas (eliminar código suelto al nivel raíz)
-- [ ] Unificar los IntersectionObservers en una función `createObserver(selector, callback, options)`
-- [ ] En `animations.js`: función `initReveal()`, función `initCountUp()`
-- [ ] En `charts.js`: funciones `initFidelizacionChart()`, `initDonutChart()`, `initRevalorizacionChart()`
-- [ ] En `maps.js`: funciones `initSpainMap()`, `initCaribeMap()`
-- [ ] En `nav.js`: función `initNav()`
-- [ ] En `sections.js`: función `initSectionArrows(sections)`
-- [ ] Llamar todas las funciones `init*` desde un `main.js` o al final de cada archivo con `DOMContentLoaded`
-- [ ] Eliminar `var`, usar `const` y `let`
-- [ ] Añadir comentarios explicativos solo donde la lógica no es obvia
+- [x] Envolver todo el código en funciones nombradas (eliminar código suelto al nivel raíz)
+- [x] Unificar los IntersectionObservers en una función `createObserver(selector, callback, options)`
+- [x] En `animations.js`: función `initReveal()`, función `initCountUp()`
+- [x] En `charts.js`: funciones `initFinancialCharts()`, `initFidelizacionChart()`, `initDigitalChart()`, `initRevalorizacionChart()`
+- [x] En `maps.js`: funciones `initSpainMap()`, `initCaribeMap()`
+- [x] En `nav.js`: funciones `initNav()`, `initGeoLines()`, `initHeroGrid()`
+- [x] En `sections.js`: funciones `initVentasAnimation()`, `initSectionArrows()`
+- [x] Llamar todas las funciones `init*` desde `js/main.js` con `DOMContentLoaded`
+- [x] Eliminar `var`, usar `const` y `let`
+- [x] Añadir comentarios explicativos solo donde la lógica no es obvia
 
 **Archivos afectados:** todos los archivos en `js/`
 

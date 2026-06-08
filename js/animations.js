@@ -1,17 +1,37 @@
-// ── PSTRIP animate top border on scroll ──
-const pso=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.5});
-document.querySelectorAll('.pstrip').forEach(el=>pso.observe(el));
+// ── OBSERVER FACTORY ──
+function createObserver(selector, callback, options) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) callback(e.target, obs); });
+  }, options);
+  document.querySelectorAll(selector).forEach(el => obs.observe(el));
+  return obs;
+}
 
 // ── REVEAL ──
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.08});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function initReveal() {
+  createObserver('.pstrip', (el) => el.classList.add('on'), { threshold: .5 });
+  createObserver('.rv',     (el) => el.classList.add('on'), { threshold: .08 });
+}
 
 // ── COUNT UP ──
-function cu(el){
-  const t=parseInt(el.dataset.target),f=el.dataset.fmt||'',s=el.dataset.suffix||'',dur=1800,st=Date.now();
-  (function tick(){const p=Math.min((Date.now()-st)/dur,1),e=1-Math.pow(1-p,3),v=Math.round(t*e);
-    el.textContent=f==='comma'?v.toLocaleString('es-ES')+s:v+s;
-    if(p<1)requestAnimationFrame(tick);})();
+function initCountUp() {
+  function animateCount(el) {
+    const target = parseInt(el.dataset.target);
+    const fmt    = el.dataset.fmt || '';
+    const suffix = el.dataset.suffix || '';
+    const dur    = 1800;
+    const start  = Date.now();
+    (function tick() {
+      const progress = Math.min((Date.now() - start) / dur, 1);
+      const eased    = 1 - Math.pow(1 - progress, 3);
+      const value    = Math.round(target * eased);
+      el.textContent = fmt === 'comma' ? value.toLocaleString('es-ES') + suffix : value + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    })();
+  }
+
+  createObserver('[data-target]', (el, obs) => {
+    animateCount(el);
+    obs.unobserve(el);
+  }, { threshold: .4 });
 }
-const co=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting&&e.target.dataset.target){cu(e.target);co.unobserve(e.target);}}),{threshold:.4});
-document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
