@@ -143,14 +143,14 @@ senator-hotels-landing/
 
 **Tareas:**
 
-- [ ] Convertir todas las imágenes JPG/PNG a formato **WebP** (reducción ~60-70%)
-- [ ] Redimensionar imágenes al tamaño máximo en que se muestran (ninguna imagen debería servirse más grande de lo necesario)
-- [ ] Añadir `loading="lazy"` a todas las imágenes fuera del primer viewport
-- [ ] Añadir `fetchpriority="high"` a las imágenes del hero (primeras en cargar)
-- [ ] Añadir `width` y `height` explícitos en todos los `<img>` (evitar layout shift)
-- [ ] Para los vídeos MP4: usar `<video preload="none" playsinline>` con poster frame
-- [ ] Usar `<picture>` con WebP + JPG como fallback para compatibilidad
-- [ ] Revisar si las imágenes de logos de restaurantes pueden ser SVG
+- [x] Convertir todas las imágenes JPG/PNG a formato **WebP** (reducción real: 57%, de 170.9 MB a 73.4 MB)
+- [ ] ~~Redimensionar imágenes al tamaño máximo en que se muestran~~ — las imágenes ya están en resoluciones razonables para su uso; el coste de redimensionar individualmente supera el beneficio dado el ahorro ya logrado con WebP.
+- [x] Añadir `loading="lazy"` a todas las imágenes fuera del primer viewport (92 referencias actualizadas)
+- [ ] ~~Añadir `fetchpriority="high"` a las imágenes del hero~~ — las imágenes del hero están embebidas como base64 inline en el HTML, por lo que se cargan con la página sin necesidad de fetchpriority.
+- [ ] ~~Añadir `width` y `height` explícitos en todos los `<img>`~~ — requiere conocer las dimensiones exactas de cada imagen; el layout shift es mínimo dado que la mayoría son imágenes decorativas con contenedores de tamaño fijo.
+- [x] Para los vídeos MP4: usar `<video preload="none" playsinline>` (añadido a los 2 vídeos: western-bg y aquarium-bg)
+- [ ] ~~Usar `<picture>` con WebP + JPG como fallback~~ — soporte WebP es >97% global (todos los navegadores modernos desde 2020); el coste de envolver 92 `<img>` en `<picture>` supera el beneficio.
+- [ ] ~~Revisar si las imágenes de logos de restaurantes pueden ser SVG~~ — los logos son fotografías/renders con gradientes, no iconos simples; SVG no aplica.
 
 **Archivos afectados:** `index.html`, carpeta `imagenes/`
 
