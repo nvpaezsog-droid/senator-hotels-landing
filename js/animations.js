@@ -11,6 +11,19 @@ function createObserver(selector, callback, options) {
 function initReveal() {
   createObserver('.pstrip', (el) => el.classList.add('on'), { threshold: .5 });
   createObserver('.rv',     (el) => el.classList.add('on'), { threshold: .08 });
+
+  // Gastro grids — add .on to the container so nth-child stagger fires in order
+  ['.gast-grid', '.gast-grid-2'].forEach(sel => {
+    const container = document.querySelector(sel);
+    if (!container) return;
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        container.classList.add('on');
+        obs.disconnect();
+      }
+    }, { threshold: 0.08 });
+    obs.observe(container);
+  });
 }
 
 // ── COUNT UP ──
