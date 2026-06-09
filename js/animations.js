@@ -13,7 +13,7 @@ function initReveal() {
   createObserver('.rv',     (el) => el.classList.add('on'), { threshold: .08 });
 
   // Gastro grids — add .on to the container so nth-child stagger fires in order
-  ['.gast-grid', '.gast-grid-2'].forEach(sel => {
+  ['.gast-grid', '.gast-grid-2', '.hosp-g'].forEach(sel => {
     const container = document.querySelector(sel);
     if (!container) return;
     const obs = new IntersectionObserver(entries => {
