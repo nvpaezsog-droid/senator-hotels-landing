@@ -139,7 +139,7 @@ senator-hotels-landing/
 
 ### FASE 5 — Optimización de imágenes y assets
 
-**Objetivo:** Reducir el peso total de 215 MB a menos de 20 MB sin pérdida visual apreciable.
+**Objetivo:** Reducir el peso total del proyecto lo maximo que se pueda sin pérdida visual apreciable.
 
 **Tareas:**
 
