@@ -60,4 +60,48 @@ function initSectionArrows() {
       window.scrollTo({ top, behavior: 'smooth' });
     });
   }
+
+  // Fix scroll para #sostenibilidad: las imágenes lazy cargadas durante el
+  // scroll desplazan el layout, así que el destino calculado al inicio queda
+  // desviado. Se anima el scroll manualmente recalculando el destino en cada
+  // frame, de modo que se aterriza directo en la sección sin pasarse.
+  const sostLink = document.querySelector('.n-links a[href="#sostenibilidad"]');
+  if (sostLink) {
+    let pending = 0;
+    sostLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.getElementById('sostenibilidad');
+      const dist = Math.abs(target.getBoundingClientRect().top - 80);
+      if (dist < 4) return; // ya estamos en la sección
+      const token = ++pending;
+      const startY = window.pageYOffset;
+      const duration = Math.min(1400, 500 + dist * 0.045);
+      const start = performance.now();
+      const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      const step = now => {
+        if (token !== pending) return; // otra navegación o scroll manual
+        const t = Math.min((now - start) / duration, 1);
+        const destY = window.pageYOffset + target.getBoundingClientRect().top - 80;
+        window.scrollTo({ top: startY + (destY - startY) * ease(t), behavior: 'instant' });
+        if (t < 1) { requestAnimationFrame(step); return; }
+        // mantiene la posición ~700ms más mientras acaban de cargar imágenes
+        const until = now + 700;
+        const pin = ts => {
+          if (token !== pending || ts > until) return;
+          const off = target.getBoundingClientRect().top - 80;
+          if (Math.abs(off) > 1 && Math.abs(off) < 2500) {
+            window.scrollBy({ top: off, behavior: 'instant' });
+          }
+          requestAnimationFrame(pin);
+        };
+        requestAnimationFrame(pin);
+      };
+      requestAnimationFrame(step);
+    });
+    // otra navegación o un gesto de scroll del usuario cancela la animación
+    document.querySelectorAll('.n-links a:not([href="#sostenibilidad"])').forEach(a =>
+      a.addEventListener('click', () => pending++));
+    ['wheel', 'touchstart'].forEach(ev =>
+      addEventListener(ev, () => pending++, { passive: true }));
+  }
 }
