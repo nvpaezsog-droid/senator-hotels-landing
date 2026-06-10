@@ -86,10 +86,7 @@ const SECTION_ARROWS = [
   { from: '#gobernanza',           to: '#organigrama',    dark: false                        },
   { from: '#organigrama',          to: '#sostenibilidad', dark: false                        },
   { from: '#sostenibilidad',       to: '#futuro',         dark: true                         },
-  { from: '#futuro',               to: '#alquiler',       dark: false                        },
-  { from: '#alquiler',             to: '#alternativas',   dark: false                        },
-  { from: '#alternativas',         to: '#reposicion',     dark: false                        },
-  { from: '#reposicion',           to: '#contacto',       dark: false                        }
+  { from: '#futuro',               to: '#trusted',        dark: false                        }
 ];
 
 // ── MAP PINS ──
